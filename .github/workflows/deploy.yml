@@ -1,0 +1,17 @@
+name: Deploy metadata
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [demo, prod]
+
+jobs:
+  deployOnDemo:
+    uses:
+    if:
+    with:
+      action_to_take: Deply
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.Demo_USERNAME }}
+      login_credentials: ${{ secrets.Demo_AUTH_URL }}
